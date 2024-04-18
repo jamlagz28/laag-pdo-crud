@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      } else{
          $product_retail_price = $input_product_retail_price;
      }
-     
+
     // Validate address
     $input_address = trim($_POST["address"]);
     if(empty($input_address)){
@@ -69,11 +69,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $salary = $input_salary;
     }
     
-    // Check input errors before inserting in database
-    if(empty($name_err) && empty($address_err) && empty($salary_err)){
+   // Check input errors before inserting in database
+    if(empty($Pname) && empty($Pdescription) && empty($Pprice)){
         // Prepare an insert statement
-        $sql = "INSERT INTO employees (name, address, salary) VALUES (:name, :address, :salary)";
- 
+        $sql = "INSERT INTO products (product_id, product_thumbnail_link, product_name, product_description, product_retail_price, product_date_added, product_updated_date) 
+        VALUES (:product_id, :product_thumbnail_link, :product_name, :product_description, :product_retail_price, :product_date_added, :product_updated_date)";
+
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
             $stmt->bindParam(":name", $param_name);
