@@ -30,7 +30,7 @@
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
                         <h2 class="pull-left">Employees Details</h2>
-                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+                        <a href=" public/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
                     </div>
                     <?php
                     // Include config file
@@ -43,27 +43,31 @@
                             echo '<table class="table table-bordered table-striped">';
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>#</th>";
+                                      
                                         echo "<th>product_id</th>";
                                         echo "<th>product_thumbnail_link</th>";
-                                        echo "<th>Salary</th>";
-                                        echo "<th>Action</th>";
+                                        echo "<th>product_name</th>";
+                                        echo "<th>product_description</th>";
+                                        echo "<th>product_retail_price</th>";
+                                        echo "<th>product_date_added</th>";
+                                        echo "<th>product_updated_date</th>";
+
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = $result->fetch()){
                                     echo "<tr>";
                                         echo "<td>" . $row['product_id'] . "</td>";
-                                        echo "<td>" . $row['product_thumbnail_link '] . "</td>";
-                                        echo "<td>" . $row[' product_name'] . "</td>";
+                                        echo "<td>" . $row['product_thumbnail_link'] . "</td>";
+                                        echo "<td>" . $row['product_name'] . "</td>";
                                         echo "<td>" . $row['product_description'] . "</td>";
-                                        echo "<td>" . $row[' product_retail_price'] . "</td>";
-                                        echo "<td>" . $row[' product_date_added'] . "</td>";
-                                        echo "<td>" . $row['product_updated_date '] . "</td>";
+                                        echo "<td>" . $row['product_retail_price'] . "</td>";
+                                        echo "<td>" . $row['product_date_added'] . "</td>";
+                                        echo "<td>" . $row['product_updated_date'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="public/read.php?id='. $row['product_id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                            echo '<a href="public/update.php?id='. $row['product_id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="public/delete.php?id='. $row['product_id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            echo '<a href="public/read.php?product_id='. $row['product_id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                            echo '<a href="public/update.php?product_id='. $row['product_id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '<a href="public/delete.php?product_id='. $row['product_id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }

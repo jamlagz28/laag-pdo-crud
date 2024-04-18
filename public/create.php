@@ -1,34 +1,17 @@
 <?php
 // Include config file
 require_once "../db/config.php";
- 
-// Define variables and initialize with empty values
-// $name = $address = $salary = "";
-// $name_err = $address_err = $salary_err = "";
 $product_id = $product_thumbnail_link = $product_name = $product_description = $product_retail_price = $product_date_added = $product_updated_date = "";
 $Pname_err = $Pdescription_err = $Pprice_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-// validate id
-    if (isset($_POST["product_id"])) {
-        $input_id = trim($_POST["product_id"]);
-        if (empty($input_product_id)) {
-            $id_err = "Please enter the id";
-        } elseif (!ctype_digit($input_product_id)) {
-            $id_err = "Please enter a positive integer value.";
-        } else {
-            $id = $input_product_id;
-        }
-    } else {
-        $product_id_err = "ID is required";
-    }
      // Validate name
      $input_product_name = trim($_POST["product_name"]);
      if(empty($input_product_name)){
          $Pname_err = "Please enter a product name.";
      } elseif (!preg_match("/^[a-zA-Z\s]+$/", $input_product_name)) {
-         $name_err = "Please enter a valid name.";
+         $Pname_err = "Please enter a valid name.";
      } else {
          $product_name = $input_product_name;
      }
@@ -50,24 +33,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
      } else{
          $product_retail_price = $input_product_retail_price;
      }
-
-    // Validate address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
-    } else{
-        $address = $input_address;
-    }
-    
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
-    } else{
-        $salary = $input_salary;
-    }
     
    // Check input errors before inserting in database
     if(empty($Pname) && empty($Pdescription) && empty($Pprice)){
@@ -76,10 +41,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         VALUES (:product_id, :product_thumbnail_link, :product_name, :product_description, :product_retail_price, :product_date_added, :product_updated_date)";
 
 if($stmt = $pdo->prepare($sql)){
-    // Bind variables to the prepared statement as parameters
-    // $stmt->bindParam(":name", $param_name);
-    // $stmt->bindParam(":address", $param_address);
-    // $stmt->bindParam(":salary", $param_salary);
     $stmt->bindParam(":product_id", $param_product_id);
     $stmt->bindParam(":product_thumbnail_link", $param_product_thumbnail_link);
     $stmt->bindParam(":product_name", $param_product_name);
@@ -88,13 +49,6 @@ if($stmt = $pdo->prepare($sql)){
     $stmt->bindParam(":product_date_added", $param_product_date_added);
     $stmt->bindParam(":product_updated_date", $param_product_updated_date);
     
-            // Set parameters
-            $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;  // Set parameters
-            // $param_name = $name;
-            // $param_address = $address;
-            // $param_salary = $salary;
             
             $param_product_id = $product_id;
             $param_product_thumbnail_link = $product_thumbnail_link;
@@ -178,7 +132,7 @@ unset($pdo);
                             <input type="text" name="product_updated_date" class="form-control" value="<?php echo $product_updated_date; ?>">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="../index.php" class="btn btn-secondary ml-2">Cancel</a>
+                        <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
                 </div>
             </div>        
