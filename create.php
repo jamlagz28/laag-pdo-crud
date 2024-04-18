@@ -75,12 +75,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "INSERT INTO products (product_id, product_thumbnail_link, product_name, product_description, product_retail_price, product_date_added, product_updated_date) 
         VALUES (:product_id, :product_thumbnail_link, :product_name, :product_description, :product_retail_price, :product_date_added, :product_updated_date)";
 
-        if($stmt = $pdo->prepare($sql)){
-            // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":name", $param_name);
-            $stmt->bindParam(":address", $param_address);
-            $stmt->bindParam(":salary", $param_salary);
-            
+if($stmt = $pdo->prepare($sql)){
+    // Bind variables to the prepared statement as parameters
+    // $stmt->bindParam(":name", $param_name);
+    // $stmt->bindParam(":address", $param_address);
+    // $stmt->bindParam(":salary", $param_salary);
+    $stmt->bindParam(":product_id", $param_product_id);
+    $stmt->bindParam(":product_thumbnail_link", $param_product_thumbnail_link);
+    $stmt->bindParam(":product_name", $param_product_name);
+    $stmt->bindParam(":product_description", $param_product_description);
+    $stmt->bindParam(":product_retail_price", $param_product_retail_price);
+    $stmt->bindParam(":product_date_added", $param_product_date_added);
+    $stmt->bindParam(":product_updated_date", $param_product_updated_date);
+    
             // Set parameters
             $param_name = $name;
             $param_address = $address;
