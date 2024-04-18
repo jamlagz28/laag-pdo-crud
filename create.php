@@ -33,14 +33,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          $product_name = $input_product_name;
      }
 
-     // Validate product description
+        // Validate product description
     $input_product_description = trim($_POST["product_description"]);
     if(empty($input_product_description)){
         $Pdescription_err = "Please enter a product description.";
     } else {
         $product_description = $input_product_description;
     }
-    
  
     // Validate address
     $input_address = trim($_POST["address"]);
