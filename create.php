@@ -23,16 +23,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else {
         $product_id_err = "ID is required";
     }
-    // Validate name
-    $input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $name_err = "Please enter a valid name.";
-    } else{
-        $name = $input_name;
-    }
-    
+     // Validate name
+     $input_product_name = trim($_POST["product_name"]);
+     if(empty($input_product_name)){
+         $Pname_err = "Please enter a product name.";
+     } elseif (!preg_match("/^[a-zA-Z\s]+$/", $input_product_name)) {
+         $name_err = "Please enter a valid name.";
+     } else {
+         $product_name = $input_product_name;
+     }
+ 
     // Validate address
     $input_address = trim($_POST["address"]);
     if(empty($input_address)){
