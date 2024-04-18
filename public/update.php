@@ -1,48 +1,51 @@
 <?php
 // Include config file
-require_once "config.php";
+require_once "../db/config.php";
  
 // Define variables and initialize with empty values
-$name = $address = $salary = "";
-$name_err = $address_err = $salary_err = "";
+// $name = $address = $salary = "";
+// $name_err = $address_err = $salary_err = "";
+$product_id = $product_thumbnail_link = $product_name = $product_description = $product_retail_price = $product_date_added = $product_updated_date = "";
+$Pname_err = $Pdescription_err = $Pprice_err = "";
  
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
+if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
     // Get hidden input value
-    $id = $_POST["id"];
+    $id = $_POST["product_id"];
     
     // Validate name
-    $input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $name_err = "Please enter a valid name.";
+    $input_product_name= trim($_POST["product_name"]);
+    if(empty($input_product_name)){
+        $Pname_err = "Please enter a product_name.";
+    } elseif(!filter_var($input_product_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+        $Pname_err = "Please enter a valid name.";
     } else{
-        $name = $input_name;
+        $product_name = $input_product_name;
     }
     
-    // Validate address address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
+    // Validate description
+    $input_product_description = trim($_POST["product_description"]);
+    if(empty($input_product_description)){
+        $Pdescription_err = "Please enter an product_description.";     
     } else{
-        $address = $input_address;
+        $product_description = $input_product_description;
     }
     
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
+    // Validate retail_price
+    $input_product_retail_price = trim($_POST["product_retail_price"]);
+    if(empty($input_product_retail_price)){
+        $Pprice_err = "Please enter the retail_price amount.";     
+    } elseif(!ctype_digit($input_product_retail_price)){
+        $Pprice_err = "Please enter a positive integer value.";
     } else{
-        $salary = $input_salary;
+        $product_retail_price = $input_product_retail_price;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($address_err) && empty($salary_err)){
+    if(empty($Pname_err) && empty($Pdescription_err) && empty($Pprice_err)){
         // Prepare an update statement
-        $sql = "UPDATE employees SET name=:name, address=:address, salary=:salary WHERE id=:id";
+ $sql = "UPDATE products SET product_name=:product_name,product_description=:product_description,, product_retail_price=:product_retail_price, product_date_added=:product_date_added, product_updated_date=:product_updated_date, name=:name, address=:address, salary=:salary
+  WHERE product_id=:product_id";
  
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
