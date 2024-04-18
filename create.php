@@ -1,13 +1,28 @@
 <?php
 // Include config file
-require_once "config.php";
+require_once "../db/config.php";
  
 // Define variables and initialize with empty values
-$name = $address = $salary = "";
-$name_err = $address_err = $salary_err = "";
+// $name = $address = $salary = "";
+// $name_err = $address_err = $salary_err = "";
+$product_id = $product_thumbnail_link = $product_name = $product_description = $product_retail_price = $product_date_added = $product_updated_date = "";
+$Pname_err = $Pdescription_err = $Pprice_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+// validate id
+    if (isset($_POST["product_id"])) {
+        $input_id = trim($_POST["product_id"]);
+        if (empty($input_product_id)) {
+            $id_err = "Please enter the id";
+        } elseif (!ctype_digit($input_product_id)) {
+            $id_err = "Please enter a positive integer value.";
+        } else {
+            $id = $input_product_id;
+        }
+    } else {
+        $product_id_err = "ID is required";
+    }
     // Validate name
     $input_name = trim($_POST["name"]);
     if(empty($input_name)){
