@@ -41,15 +41,15 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
          }
      }
      
-    // Close statement
-    unset($stmt);
+   // Close statement
+   unset($stmt);
     
-    // Close connection
-    unset($pdo);
+   // Close connection
+   unset($pdo);
 } else{
-    // URL doesn't contain id parameter. Redirect to error page
-    header("location: error.php");
-    exit();
+   // URL doesn't contain id parameter. Redirect to error page
+   header("location: public/error.php");
+   exit();
 }
 ?>
 
