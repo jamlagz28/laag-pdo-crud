@@ -73,18 +73,18 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                 <div class="col-md-12">
                     <h1 class="mt-5 mb-3">View Record</h1>
                     <div class="form-group">
-                        <label>Name</label>
-                        <p><b><?php echo $row["name"]; ?></b></p>
+                        <label>product_name</label>
+                        <p><b><?php echo $row["product_name"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <p><b><?php echo $row["address"]; ?></b></p>
+                        <label>product_description</label>
+                        <p><b><?php echo $row["product_description"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Salary</label>
-                        <p><b><?php echo $row["salary"]; ?></b></p>
+                        <label>Sproduct_retail_price</label>
+                        <p><b><?php echo $row["product_retail_price"]; ?></b></p>
                     </div>
-                    <p><a href="index.php" class="btn btn-primary">Back</a></p>
+                    <p><a href="../index.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>        
         </div>
