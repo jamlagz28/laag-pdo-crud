@@ -21,20 +21,25 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
               
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 
-                // Retrieve individual field value
-                $name = $row["name"];
-                $address = $row["address"];
-                $salary = $row["salary"];
-            } else{
-                // URL doesn't contain valid id parameter. Redirect to error page
-                header("location: error.php");
-                exit();
-            }
-            
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-    }
+                 // Retrieve individual field value
+                 $product_id =  $row["product_id"];
+                 $product_thumbnail_link =  $row["product_thumbnail_link"];
+                 $product_name = $row["product_name"];
+                 $product_description =  $row["product_description"];
+                 $product_retail_price = $row["product_retail_price"];
+                 $product_date_added =  $row["product_date_added"];
+                 $product_updated_date =  $row["product_updated_date"];
+ 
+             } else{
+                 // URL doesn't contain valid id parameter. Redirect to error page
+                 header("location: public/error.php");
+                 exit();
+             }
+             
+         } else{
+             echo "Oops! Something went wrong. Please try again later.";
+         }
+     }
      
     // Close statement
     unset($stmt);
