@@ -91,7 +91,18 @@ if($stmt = $pdo->prepare($sql)){
             // Set parameters
             $param_name = $name;
             $param_address = $address;
-            $param_salary = $salary;
+            $param_salary = $salary;  // Set parameters
+            // $param_name = $name;
+            // $param_address = $address;
+            // $param_salary = $salary;
+            
+            $param_product_id = $product_id;
+            $param_product_thumbnail_link = $product_thumbnail_link;
+            $param_product_name = $product_name;
+            $param_product_description = $product_description;
+            $param_product_retail_price = $product_retail_price;
+            $param_product_date_added = $product_date_added;
+            $param_product_updated_date = $product_updated_date;
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
