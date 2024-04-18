@@ -41,6 +41,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $product_description = $input_product_description;
     }
  
+     // Validate product retail price
+     $input_product_retail_price = trim($_POST["product_retail_price"]);
+     if(empty($input_product_retail_price)){
+         $Pprice_err = "Please enter the product retail price.";     
+     } elseif(!ctype_digit($input_product_retail_price)){
+         $Pprice_err = "Please enter a valid product retail price.";
+     } else{
+         $product_retail_price = $input_product_retail_price;
+     }
+     
     // Validate address
     $input_address = trim($_POST["address"]);
     if(empty($input_address)){
