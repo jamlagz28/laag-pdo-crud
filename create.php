@@ -104,22 +104,24 @@ if($stmt = $pdo->prepare($sql)){
             $param_product_date_added = $product_date_added;
             $param_product_updated_date = $product_updated_date;
             
-            // Attempt to execute the prepared statement
-            if($stmt->execute()){
-                // Records created successfully. Redirect to landing page
-                header("location: index.php");
-                exit();
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+           // Attempt to execute the prepared statement
+           if($stmt->execute()){
+            // Records created successfully. Redirect to landing page
+            header("location: ../index.php");
+            exit();
+        } else{
+            echo "Oops! Something went wrong. Please try again later.";
         }
-         
-        // Close statement
-        unset($stmt);
     }
-    
-    // Close connection
-    unset($pdo);
+  
+
+     
+    // Close statement
+    unset($stmt);
+}
+
+// Close connection
+unset($pdo);
 }
 ?>
  
