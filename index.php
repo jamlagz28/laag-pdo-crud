@@ -29,50 +29,64 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                        <h2 class="pull-left">Employees Details</h2>
-                        <a href=" public/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+                        <h2 class="pull-left">Product Details</h2>
+                        <a href="./public/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Product</a>
                     </div>
                     <?php
                     // Include config file
-                    require_once "db/config.php";
+                    require_once "./db/config.php";
                     
                     // Attempt select query execution
-                    $sql = "SELECT * FROM products ";
+                    $sql = "SELECT * FROM products";
                     if($result = $pdo->query($sql)){
                         if($result->rowCount() > 0){
-                            echo '<table class="table table-bordered table-striped">';
-                                echo "<thead>";
-                                    echo "<tr>";
-                                      
-                                        echo "<th>product_id</th>";
-                                        echo "<th>product_thumbnail_link</th>";
-                                        echo "<th>product_name</th>";
-                                        echo "<th>product_description</th>";
-                                        echo "<th>product_retail_price</th>";
-                                        echo "<th>product_date_added</th>";
-                                        echo "<th>product_updated_date</th>";
-
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
-                                while($row = $result->fetch()){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['product_id'] . "</td>";
-                                        echo "<td>" . $row['product_thumbnail_link'] . "</td>";
-                                        echo "<td>" . $row['product_name'] . "</td>";
-                                        echo "<td>" . $row['product_description'] . "</td>";
-                                        echo "<td>" . $row['product_retail_price'] . "</td>";
-                                        echo "<td>" . $row['product_date_added'] . "</td>";
-                                        echo "<td>" . $row['product_updated_date'] . "</td>";
-                                        echo "<td>";
-                                            echo '<a href="public/read.php?product_id='. $row['product_id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                            echo '<a href="public/update.php?product_id='. $row['product_id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="public/delete.php?product_id='. $row['product_id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                                        echo "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                            // Define the table template
+                            $tableTemplate = '
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Product Name</th>
+                                            <th>Product Description</th>
+                                            <th>Retail Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{rows}}
+                                    </tbody>
+                                </table>
+                            ';
+                    
+                            // Define the row template
+                            $rowTemplate = '
+                                <tr>
+                                    <td>{{product_id}}</td>
+                                    <td>{{product_name}}</td>
+                                    <td>{{product_details}}</td>
+                                    <td>{{product_retail_price}}</td>
+                                    <td>
+                                        <a href="./public/read.php?product_id={{product_id}}" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>
+                                        <a href="./public/update.php?product_id={{product_id}}" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>
+                                        <a href="./public/delete.php?product_id={{product_id}}" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>
+                                    </td>
+                                </tr>
+                            ';
+                    
+                            // Populate the rows using the row template
+                            $rows = '';
+                            while ($row = $result->fetch()) {
+                                $rowHtml = str_replace(
+                                    array('{{product_id}}', '{{product_name}}', '{{product_details}}', '{{product_retail_price}}'),
+                                    array($row['product_id'], $row['product_name'], $row['product_details'], $row['product_retail_price']),
+                                    $rowTemplate
+                                );
+                                $rows .= $rowHtml;
+                            }
+                    
+                            // Replace the rows placeholder in the table template with the actual rows
+                            echo str_replace('{{rows}}', $rows, $tableTemplate);
+                            
                             // Free result set
                             unset($result);
                         } else{
