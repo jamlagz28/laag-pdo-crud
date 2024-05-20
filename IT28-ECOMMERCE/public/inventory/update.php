@@ -1,7 +1,6 @@
 <?php
 // Include config file
-require_once $_SERVER['DOCUMENT_ROOT'] . "/it28-ecommerce/db/config.php";
- 
+require_once '../../db/config.php';
 // Define variables and initialize with empty values
 $title = $description = $price = $rrp = $quantity = $img = "";
 $title_err = $description_err = $price_err = $rrp_err = $quantity_err = $img_err = "";

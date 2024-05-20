@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once $_SERVER['DOCUMENT_ROOT'] . "/it28-ecommerce/db/config.php";
+require_once '../../db/config.php';
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
