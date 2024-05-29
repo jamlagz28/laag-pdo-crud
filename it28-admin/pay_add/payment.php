@@ -118,6 +118,7 @@ a:hover {
             <option value="PayMaya">PayMaya</option>
             <option value="GCash">GCash</option>
             <option value="PayPal">PayPal</option>
+            <option value="PayPal">Credit Card</option>
         </select><br><br>
         <input type="submit" value="Submit">
     </form>

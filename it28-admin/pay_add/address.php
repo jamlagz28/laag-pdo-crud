@@ -22,7 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         $stmt->execute();
-        echo "Address recorded successfully!";
+        header("Location: success.php");
+        exit();
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
@@ -35,8 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Address Form</title>
-</head>
-<style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
@@ -83,25 +83,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #0056b3;
         }
     </style>
+</head>
 <body>
-    <h2>Enter Full Address</h2>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="streetAddress">Street Address:</label><br>
-        <input type="text" id="streetAddress" name="streetAddress"><br><br>
+    <div class="container">
+        <h2>Enter Full Address</h2>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <label for="streetAddress">Street Address:</label><br>
+            <input type="text" id="streetAddress" name="streetAddress"><br><br>
 
-        <label for="city">City:</label><br>
-        <input type="text" id="city" name="city"><br><br>
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city"><br><br>
 
-        <label for="state">State:</label><br>
-        <input type="text" id="state" name="state"><br><br>
+            <label for="state">State:</label><br>
+            <input type="text" id="state" name="state"><br><br>
 
-        <label for="postalCode">Postal Code:</label><br>
-        <input type="text" id="postalCode" name="postalCode"><br><br>
+            <label for="postalCode">Postal Code:</label><br>
+            <input type="text" id="postalCode" name="postalCode"><br><br>
 
-        <label for="country">Country:</label><br>
-        <input type="text" id="country" name="country"><br><br>
+            <label for="country">Country:</label><br>
+            <input type="text" id="country" name="country"><br><br>
 
-        <input type="submit" value="Submit">
-    </form>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
