@@ -9,6 +9,6 @@ $_SESSION = array();
 session_destroy();
  
 // Redirect to login page
-header("Location: /products/IT28-ECOMMERCE/index.php");
+header("Location: /baslao-pdo-crud-2/it28-admin/index.php");
 exit;
 ?>
