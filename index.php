@@ -94,7 +94,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#">
             <img src="https://st2.depositphotos.com/1768926/12401/v/950/depositphotos_124010534-stock-illustration-car-logo-auto-symbol-and.jpg" width="30" height="30" class="d-inline-block align-top" alt="Softball Logo">
-            <span style="color: white;">Jcars Store</span>
+            <span style="color: white;">JamLagz Crown Luxury Cars</span>
         </a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
