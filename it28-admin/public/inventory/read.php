@@ -4,7 +4,6 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     // Include config file
     require_once '../../db/config.php';
 
-
     
     // Prepare a select statement
     $sql = "SELECT * FROM products WHERE id = :id";

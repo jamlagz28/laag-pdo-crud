@@ -1,14 +1,15 @@
 <?php
 // Include config file
 require_once '../../db/config.php';
- 
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
- 
+$show_modal = false;
+
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
@@ -45,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
     } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Password must have at least 6 characters.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -77,8 +78,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
             // Attempt to execute the prepared statement
             if($stmt->execute()){
-                // Redirect to login page
-                header("location: ../index.php");
+                // Show the modal on successful account creation
+                $show_modal = true;
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -129,10 +130,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="reset" class="btn btn-secondary ml-2" value="Reset">
         </div>
         <p>Already have an account? <a href="../../index.php">Login here</a>.</p>
-
-
     </form>
 </div>
-    
+
+<!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Account created successfully!
+      </div>
+      <div class="modal-footer">
+        <a href="../../index.php" class="btn btn-primary">Back to Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+<?php if($show_modal): ?>
+$(document).ready(function(){
+    $('#successModal').modal('show');
+});
+<?php endif; ?>
+</script>
 </body>
 </html>
