@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 06:40 AM
+-- Generation Time: May 31, 2024 at 04:29 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,19 +34,9 @@ CREATE TABLE `addresses` (
   `state` varchar(100) NOT NULL,
   `postal_code` varchar(20) NOT NULL,
   `country` varchar(100) NOT NULL,
+  `payment_id` int(6) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `addresses`
---
-
-INSERT INTO `addresses` (`id`, `street_address`, `city`, `state`, `postal_code`, `country`, `created_at`) VALUES
-(1, '', '', '', '', '', '2024-05-27 07:08:03'),
-(2, '', '', '', '', '', '2024-05-27 07:08:06'),
-(3, 'manolo', 'none', 'mindanao', '21321', 'Philippines', '2024-05-29 02:06:00'),
-(4, 'tankulan', 'none', 'mindanao', '21321', 'Philippines', '2024-05-29 02:13:54'),
-(5, 'tankulan', 'none', 'mindanao', '21321', 'Philippines', '2024-05-29 02:18:21');
 
 -- --------------------------------------------------------
 
@@ -61,22 +51,6 @@ CREATE TABLE `payments` (
   `payment_method` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payments`
---
-
-INSERT INTO `payments` (`id`, `product_name`, `price`, `payment_method`, `created_at`) VALUES
-(1, 'softball gloves', 20.00, 'PayMaya', '2024-05-29 02:04:58'),
-(2, 'softball gloves', 20.00, 'PayMaya', '2024-05-29 02:05:05'),
-(3, '', 0.00, 'PayMaya', '2024-05-29 02:12:18'),
-(4, '', 0.00, 'PayMaya', '2024-05-29 02:13:06'),
-(5, '', 0.00, 'PayMaya', '2024-05-29 02:13:27'),
-(6, 'softball gloves', 50.00, 'PayMaya', '2024-05-29 02:13:35'),
-(7, 'softball gloves', 50.00, 'PayMaya', '2024-05-29 02:17:20'),
-(8, 'softball gloves', 50.00, 'PayMaya', '2024-05-29 02:17:52'),
-(9, 'softball gloves', 50.00, 'PayMaya', '2024-05-29 02:17:56'),
-(10, 'softball gloves', 50.00, 'PayMaya', '2024-05-29 02:18:14');
 
 -- --------------------------------------------------------
 
@@ -138,24 +112,13 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 -- Indexes for table `addresses`
 --
 ALTER TABLE `addresses`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payment_id` (`payment_id`);
 
 --
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -166,25 +129,23 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `products`
+-- Constraints for dumped tables
 --
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `users`
+-- Constraints for table `addresses`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `addresses`
+  ADD CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
