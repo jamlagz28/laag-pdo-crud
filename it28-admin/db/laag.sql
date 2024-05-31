@@ -74,14 +74,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `rrp`, `quantity`, `img`, `date_added`) VALUES
-(1, 'Tesla Model S', 'A high-performance electric car designed for maximum power and efficiency.', 79999, 84999, 10, 'https://w0.peakpx.com/wallpaper/298/736/HD-wallpaper-tesla-model-s-ii-electric-cars.jpg', '2024-05-08 00:00:00'),
-(2, 'Ford Mustang', 'A durable and stylish sports car suitable for all driving enthusiasts.', 55999, 58999, 15, 'https://images5.alphacoders.com/421/421895.jpg', '2024-05-08 00:00:00'),
-(3, 'Toyota Camry', 'A reliable and efficient sedan for everyday use.', 24999, 26999, 25, 'https://eskipaper.com/images/toyota-camry-1.jpg', '2024-05-08 00:00:00'),
-(4, 'Chevrolet Corvette', 'A luxury sports car with excellent performance and stunning design.', 69999, 72999, 5, 'https://di-uploads-pod12.dealerinspire.com/stingraychevy/uploads/2020/03/Screen-Shot-2020-03-27-at-11.58.54-AM.png', '2024-05-08 00:00:00'),
-(5, 'Honda Accord', 'A popular sedan known for its reliability and fuel efficiency.', 23999, 25999, 20, 'https://cdn.motor1.com/images/mgl/7XlBW/s1/2018-honda-accord-touring.jpg', '2024-05-08 00:00:00'),
-(6, 'BMW 3 Series', 'A premium sedan with advanced features and superior performance.', 40999, 42999, 8, 'https://www.carsome.my/news/wp-content/uploads/wp/a832b-fb-3-srs-2019.jpg', '2024-05-08 00:00:00'),
-(7, 'Audi A4', 'A stylish and luxurious sedan with cutting-edge technology.', 37999, 39999, 12, 'https://www.hdwallpapers.in/download/blue_audi_a4_45_tfsi_quattro_s_line_2020_4k_5k_hd_cars-5120x2880.jpg', '2024-05-08 00:00:00'),
-(8, 'Mercedes-Benz C-Class', 'A high-end sedan offering comfort, performance, and luxury.', 41999, 43999, 7, 'https://imgd.aeplcdn.com/664x374/n/cw/ec/116201/c-class-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80', '2024-05-08 00:00:00');
+(1, 'TESLA MODEL S', 'A high-performance electric car designed for maximum power and efficiency.', 4200000, 4200000, 5, 'https://www.exoticmotorsportsok.com/imagetag/488/main/l/Used-2014-Tesla-Model-S-P85+-1617175020.jpg', '2024-05-08 00:00:00'),
+(2, 'FORD MUSTANG', 'A durable and stylish sports car suitable for all driving enthusiasts.', 3499000, 3499000, 7, 'https://img.philkotse.com/crop/600x338/2023/12/26/20231226134326-1523_wm.jpg', '2024-05-08 00:00:00'),
+(3, 'TOYOTA CAMRY', 'A reliable and efficient sedan for everyday use.', 2457000, 245700, 8, 'https://www.cars.com/i/large/in/v2/635f91b9-e2ba-5c91-95e0-1d6a4d805993/e5c51300-9ade-423b-863b-e9f5f7682778/iWS1VoCbrS0TIen86PXuRN6Vz9o.jpg', '2024-05-08 00:00:00'),
+(4, 'CHEVROLET CORVETTE', 'A luxury sports car with excellent performance and stunning design.', 12571000, 12571000, 3, 'https://cdn05.carsforsale.com/7b298494861a66c199f3eb67b11a68cf/800x600/2023-chevrolet-corvette-stingray-2dr-convertible-w-1lt.jpg', '2024-05-08 00:00:00'),
+(5, 'HONDA ACCORD', 'A popular sedan known for its reliability and fuel efficiency.', 2288000, 2288000, 10, 'https://img.philkotse.com/crop/600x338/2024/04/03/20240403142157-fbc4_wm.jpg', '2024-05-08 00:00:00'),
+(6, 'BMW 3 SERIES', 'A premium sedan with advanced features and superior performance.', 3790000, 3790000, 6, 'https://img.autotrader.co.za/28366576/Crop640x480', '2024-05-08 00:00:00'),
+(7, 'AUDI A4', 'A stylish and luxurious sedan with cutting-edge technology.', 3850000, 3850000, 9, 'https://images.clickdealer.co.uk/vehicles/5577/5577582/full/130183537.jpg', '2024-05-08 00:00:00'),
+(8, 'MERCEDES-BENZ C-CLASS', 'A high-end sedan offering comfort, performance, and luxury.', 3990000, 3990000, 5, 'https://hermes.carsalesportal.co.za/storage/stocks/westvaal-nelspruit/2023-09/2019-mercedes-benz-c-class-sedan-c-180-9g-tronic-115053-1.jpg', '2024-05-08 00:00:00');
 
 -- --------------------------------------------------------
 

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->rowCount() > 0) {
         // Redirect to successful.php
-        header("Location: successful.php");
+        header("Location: success.php");
         exit();
     } else {
         echo "Error: Unable to record address.";
